@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ComAct &mdash; Reframing Professional Software Manipulation via COM-as-Action Paradigm</title>
+  <meta name="description" content="Reframing Professional Software Manipulation via COM-as-Action Paradigm">
+  <meta name="keywords" content="Computer-Use Agents, MLLM, Professional Software, ComCADBench, ComForge, ComActor">
+
+  <link rel="icon" href="static/images/icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      color-scheme: light;
+      --bg:        #ffffff;
+      --ink:       #17171a;
+      --ink-soft:  #46474c;
+      --muted:     #8b8d93;
+      --rule:      #e9e9eb;
+      --accent:    #3454d1;
+      --accent-deep: #28409e;
+      --accent-soft: rgba(52,84,209,0.08);
+      --code-bg:   #f7f7f9;
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    :focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none !important; animation: none !important; }
+    }
+
+    .wrap{ max-width: 820px; margin: 0 auto; padding-inline: 24px; }
+    .wrap-wide{ max-width: 1250px; margin: 0 auto; padding-inline: 24px; }
+    section{ padding: 56px 0; }
+    .section-video{ padding: 32px 0 56px; }
+    .center{ text-align:center; }
+
+    h2.section-title{
+      position: relative;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.55rem;
+      color: var(--ink);
+      margin: 0 0 22px;
+      padding-top: 16px;
+      letter-spacing: -0.01em;
+    }
+    h2.section-title::before{
+      content:'';
+      position:absolute; top:0; left:0;
+      width: 30px; height: 3px;
+      background: var(--accent);
+    }
+    .center h2.section-title::before{ left: 50%; transform: translateX(-50%); }
+
+    hr.rule{
+      max-width: 1100px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ---------- hero ---------- */
+    .hero{
+      padding: 76px 24px 36px;
+      text-align:center;
+      background: radial-gradient(120% 100% at 50% 0%, #f4f6ff 0%, #ffffff 65%);
+    }
+
+    .hero-title{
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2.1rem, 4.4vw, 2.85rem);
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin: 0;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+    }
+    .hero-title img{ width: 1.5em; height:1.5em; }
+
+    .hero-subtitle{
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin: 8px auto 0;
+      letter-spacing: -0.005em;
+    }
+
+    .authors{
+      max-width: 700px;
+      margin: 28px auto 0;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+      line-height: 1.85;
+    }
+    .authors sup{ color: var(--accent); font-weight:600; }
+
+    .corresponding{
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .btn-row{
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:center;
+      margin-top: 30px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 18px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+    .btn svg{ width:16px; height:16px; stroke: currentColor; }
+    .btn:hover{ background: var(--ink); color: #fff; text-decoration:none; }
+
+    .btn-primary{ background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn-primary:hover{ background: var(--accent-deep); border-color: var(--accent-deep); }
+
+    /* ---------- media (video / figures) ---------- */
+    .media{
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .media img{
+      display:block; width:100%;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .figure-caption{
+      margin: 12px 0 0;
+      max-width: 1000px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .figure-caption code{
+      background: var(--code-bg);
+      border: 1px solid var(--rule);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: var(--ink-soft);
+    }
+
+    .figure-row{
+      display:flex;
+      gap: 20px;
+      justify-content:center;
+      align-items:flex-end;
+      flex-wrap: wrap;
+    }
+    .figure-divider{
+      width: 1px;
+      background: var(--rule);
+      align-self: stretch;
+    }
+    .figure-visual{
+      flex: 0 0 auto;
+      height: 380px;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      overflow: hidden;
+      display:flex;
+    }
+    .figure-visual img{
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+      display:block;
+    }
+
+    .figure-caption-row{
+      margin-top: 14px;
+    }
+    .figure-caption-row .figure-caption{
+      margin: 0;
+      max-width: none;
+    }
+
+    @media (max-width: 720px){
+      .figure-row{ flex-direction: column; align-items: stretch; }
+      .figure-visual{ height: auto; width: 100%; }
+      .figure-visual img{ height: auto; width: 100%; max-width: 100%; }
+      .figure-divider{ display:none; }
+    }
+
+    .video-frame{
+      position: relative;
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      background: linear-gradient(135deg, #f4f5f9, #ebedf3);
+    }
+    .video-frame video{
+      position:absolute; inset:0;
+      display:block; width:100%; height:100%;
+      background: transparent;
+    }
+    .video-placeholder{
+      position:absolute; inset:0;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:10px; padding: 24px; text-align:center;
+      color: var(--muted);
+    }
+    .video-placeholder[hidden]{ display: none; }
+    .video-placeholder svg{ width:38px; height:38px; opacity:0.45; }
+    .video-placeholder p{ margin:0; font-size:0.85rem; max-width:380px; line-height:1.5; }
+    .video-placeholder code{
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--rule);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    /* ---------- abstract ---------- */
+    .abstract-text{
+      font-size: 1.02rem;
+      color: var(--ink-soft);
+      text-align: left;
+      max-width: 760px;
+    }
+
+    /* ---------- updates / news ---------- */
+    .news p{
+      max-width: 760px;
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+    }
+    .news .date{ color: var(--ink); font-weight: 600; margin-right: 6px; }
+
+    /* ---------- bibtex ---------- */
+    .code-panel{
+      position: relative;
+      max-width: 760px;
+      background: var(--code-bg);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 22px;
+    }
+    .code-panel pre{
+      margin:0;
+      font-family: ui-monospace, 'SF Mono', 'Consolas', monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #2d2d2d;
+      overflow-x: auto;
+      white-space: pre;
+      text-align: left;
+    }
+    .copy-btn{
+      position:absolute; top:10px; right:10px;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+    .copy-btn:hover{ color: var(--ink); border-color: var(--ink); }
+
+    /* ---------- footer ---------- */
+    footer{
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 28px 24px;
+    }
+    footer a{ color: var(--muted); }
+    footer a:hover{ color: var(--ink); }
+
+    @media (max-width: 640px){
+      section{ padding: 44px 0; }
+      .hero{ padding: 48px 18px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1 class="hero-title">
+      <img src="static/images/icon.png" alt="">
+      <span>ComAct</span>
+    </h1>
+    <p class="hero-subtitle">Reframing Professional Software Manipulation via COM-as-Action Paradigm</p>
+
+    <div class="authors">
+      Jiaxin Ai, Tao Hu, Xuemeng Yang, Shu Zou, Hairong Zhang, Daocheng Fu, Yu Yang,
+      Hongbin Zhou, Nianchen Deng, Pinlong Cai, Zhongyuan Wang, Botian Shi, Kaipeng Zhang, Licheng Wen<sup>&dagger;</sup>
+    </div>
+    <div class="corresponding">&dagger; Corresponding author &mdash; <a href="mailto:wenlicheng@pjlab.org.cn">wenlicheng@pjlab.org.cn</a></div>
+
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://arxiv.org/abs/2606.13239">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+        Paper˙
+      </a>
+      <a class="btn" href="https://github.com/KnowledgeXLab/ComAct">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 18 2 12l6-6"/><path d="M16 6l6 6-6 6"/></svg>
+        Code
+      </a>
+      <a class="btn" href="https://huggingface.co/datasets">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M9 7V3M15 7V3M9 21v-4M15 21v-4M7 9H3M7 15H3M21 9h-4M21 15h-4"/></svg>
+        Model
+      </a>
+      <a class="btn" href="https://huggingface.co/datasets">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>
+        Dataset
+      </a>
+    </div>
+  </header>
+
+  <section class="section-video">
+    <div class="media">
+      <div class="video-frame" id="video-frame">
+        <video id="demo-video" controls preload="metadata" playsinline>
+          <source src="static/videos/comact_demo.mp4" type="video/mp4">
+        </video>
+        <div class="video-placeholder" id="video-placeholder" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z" fill="currentColor" stroke="none"/></svg>
+          <p>ComAct Demo video.</code></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <section>
+    <div class="wrap news">
+      <h2 class="section-title">Updates</h2>
+      <p><span class="date">06/20/2026</span>We release our paper and project page. The data and code will be openly available soon.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-text">
+        Existing computer-use agents remain fundamentally limited in professional software manipulation: GUI-based agents suffer from fragile visual grounding and long-horizon error accumulation, while API-based approaches struggle with heterogeneous protocols and inaccessible commercial interfaces. We identify the Component Object Model (COM) as a unified executable abstraction, proposing <strong>COM-as-Action</strong> &mdash; a new paradigm that reframes professional software interaction as deterministic program synthesis rather than sequential visual control. We introduce <strong>ComCADBench</strong>, the first benchmark for agents operating real industrial CAD software, and develop <strong>ComActor</strong>, a self-correcting agent trained through a progressive three-stage framework on <strong>ComForge</strong>, a scalable platform for training in Windows containers. ComActor achieves state-of-the-art performance on ComCADBench, with strong resilience in long-horizon tasks where baselines collapse, and generalizes to external CAD benchmarks.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Overview</h2>
+    </div>
+      <div class="wrap-wide">
+  <div class="figure-row">
+    <div class="figure-visual">
+      <img src="static/images/fig1_teaser.png" alt="Figure 1: Comparison of GUI, API/MCP, and COM action spaces.">
+    </div>
+
+      <div class="figure-divider"></div>
+
+    <div class="figure-visual">
+      <img src="static/images/fig2_pipeline.png" alt="Figure 2: Overview of the ComAct framework, training stages, and ComForge infrastructure.">
+    </div>
+  </div>
+  <div class="figure-caption-row">
+    <p class="figure-caption"><strong>Left:</strong> Comparison of existing computer-use paradigms and our proposed ComAct paradigm. GUI- based agents rely on fragile visual grounding and suffer from long-horizon error accumulation, while API-based agents are constrained by fragmented and limited inter- faces. In contrast, we leverage the COM as a unified semantic programmatic interface, enabling executable program synthesis and cross-application workflows.
+    <strong>Right:</strong> Overview of our ComAct framework, consisting of three components: a data construction pipeline that synthesizes verified instruction–code pairs; a three-stage progressive training framework (text-to-code SFT, agentic SFT, and GRPO with continuous geometric reward); and a scalable infrastructure supporting 1000+ parallel real Windows environments for training and evaluation.</p>
+  </div>
+</div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Results</h2>
+    </div>
+    <div class="media">
+      <img src="static/images/table1_results.png" alt="Results table on ComCADBench comparing ComActor against GPT-5 and Claude Sonnet 4.6">
+      <p class="figure-caption"><strong>Table 1.</strong> ComActor (9B) sets a new state of the art across every category on ComCADBench, beating GPT-5 and Claude-Sonnet-4.6 without few-shot prompting or retrieval augmentation &mdash; the gap is largest on long-horizon multi-task pipelines, where baseline performance collapses.</p>
+    </div>
+    <div class="media" style="margin-top: 36px;">
+      <img src="static/images/fig4_trajectory.png" alt="Figure 4: An execution trajectory of the agent completing a multi-task modeling and engineering drawing pipeline.">
+      <p class="figure-caption"><strong>Figure 4.</strong> A real execution trajectory: the agent writes a COM script, reads back a traceback from the terminal, diagnoses and rewrites the failing step, then carries on to the next task and signals <code>DONE</code> once the part and dimensioned drawing are exported.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="BibTeX">
+    <div class="wrap">
+      <h2 class="section-title">BibTeX</h2>
+      <div class="code-panel">
+        <button class="copy-btn" id="copy-btn" onclick="copyBibtex()">Copy</button>
+        <pre id="bibtex-text">@misc{ai2026comactreframingprofessionalsoftware,
+    title={ComAct: Reframing Professional Software Manipulation via COM-as-Action Paradigm},
+    author={Jiaxin Ai and Tao Hu and Xuemeng Yang and Shu Zou and Hairong Zhang and Daocheng Fu and Yu Yang and Hongbin Zhou and Nianchen Deng and Pinlong Cai and Zhongyuan Wang and Botian Shi and Kaipeng Zhang and Licheng Wen},
+    year={2026},
+    eprint={2606.13239},
+    archivePrefix={arXiv},
+    primaryClass={cs.SE},
+    url={https://arxiv.org/abs/2606.13239},
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Site adapted from <a href="https://mmt-bench.github.io/#examples">MMT-Bench</a>,
+    <a href="https://mmmu-benchmark.github.io/">MMMU</a>,
+    <a href="https://nerfies.github.io/">Nerfies</a> and
+    <a href="https://mathvista.github.io/">MathVista</a> &mdash; licensed under
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>.
+  </footer>
+
+  <script>
+    (function(){
+      var video = document.getElementById('demo-video');
+      var placeholder = document.getElementById('video-placeholder');
+      var source = video.querySelector('source');
+      function showPlaceholder(){
+        video.style.display = 'none';
+        placeholder.hidden = false;
+      }
+      video.addEventListener('error', showPlaceholder, true);
+      source.addEventListener('error', showPlaceholder);
+      setTimeout(function(){
+        if (video.readyState === 0) showPlaceholder();
+      }, 1200);
+    })();
+
+    function copyBibtex(){
+      var text = document.getElementById('bibtex-text').innerText;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){
+          var btn = document.getElementById('copy-btn');
+          var original = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(function(){ btn.textContent = original; }, 1500);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
