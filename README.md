@@ -7,16 +7,19 @@
         <img alt="arXiv" src="https://img.shields.io/badge/arXiv-2606.13239-b31b1b.svg?style=for-the-badge">
     </a>
     <a href="https://KnowledgeXLab.github.io/ComAct" target="_blank">
-        <img alt="Project Page" src="https://img.shields.io/badge/🌐%20Project-Page-orange?style=for-the-badge">
+        <img alt="Project Page" src="https://img.shields.io/badge/%F0%9F%8C%90%20Project-Page-orange?style=for-the-badge">
     </a>
     <a href="LICENSE" target="_blank">
         <img alt="License" src="https://img.shields.io/github/license/KnowledgeXLab/ComAct?style=for-the-badge&color=blue">
     </a>
-    <a href="https://huggingface.co/KnowledgeXLab/ComAct/ComActor-9B" target="_blank">
+    <a href="https://huggingface.co/KnowledgeXLab/ComActor-9B" target="_blank">
         <img alt="Hugging Face Model" src="https://img.shields.io/badge/%F0%9F%A4%97%20Model-ComActor--9B-blue?style=for-the-badge">
     </a>
-    <a href="https://huggingface.co/datasets/KnowledgeXLab/ComAct/ComCADBench" target="_blank">
-        <img alt="Hugging Face Dataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-ComCADBench-green?style=for-the-badge">
+    <a href="https://huggingface.co/datasets/KnowledgeXLab/ComCAD_Bench" target="_blank">
+        <img alt="Hugging Face Benchmark" src="https://img.shields.io/badge/%F0%9F%A4%97%20Benchmark-ComCADBench-green?style=for-the-badge">
+    </a>
+    <a href="https://huggingface.co/datasets/KnowledgeXLab/ComCAD_Datasets" target="_blank">
+        <img alt="Hugging Face Dataset" src="https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-ComCAD--30k-green?style=for-the-badge">
     </a>
 </p>
 
