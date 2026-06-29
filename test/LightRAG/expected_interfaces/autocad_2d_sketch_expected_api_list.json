@@ -1,0 +1,9 @@
+[
+    {
+        "type": "property",
+        "owner_Object": "Application",
+        "name": "Documents",
+        "description": "Gets the Documents collection.",
+        "property_value": "The Documents collection for the current AutoCAD session."
+    }
+]

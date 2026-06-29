@@ -1,0 +1,116 @@
+[
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "Documents",
+        "description": "Gets all the in-memory documents in a collection.",
+        "property_value": "This is a read only property whose value is a Documents."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "TransientObjects",
+        "description": "Gets the object through which all general transient objects are created.",
+        "property_value": "This is a read only property whose value is a TransientObjects."
+    },
+    {
+        "type": "method",
+        "parent_Object": "AssemblyComponentDefinition",
+        "name": "AnalyzeInterference",
+        "description": "Method that analyzes the interference between two components. The input ObjectCollections contain the component occurrences that are to be checked for interference. If only one set is provided then interference checking is performed between all occurrences provided in the set. If two sets are provided then the overlap between the components of the two collections are calculated.",
+        "parameters": [
+            {
+                "Description": "Input that contains ComponentOccurrenceobjects. If this set is provided without Set2, all occurrences in the set are checked for interference against all other occurrences in the set.",
+                "Name": "Set1",
+                "Type": "ObjectCollection"
+            },
+            {
+                "Description": "Optional input that contains ComponentOccurrence objects. When this set is provided the occurrences in Set1 are checked for interference against the occurrences in Set2.\n\nThis is an optional argument whose default value is null.",
+                "Name": "Set2",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "TransientObjects",
+        "name": "CreateObjectCollection",
+        "description": "Constructs a new ObjectCollection object. If an ObjectsEnumerator is passed in, the collection starts off containing the enumerated objects.",
+        "parameters": [
+            {
+                "Description": "Input Variant that contains the enumerated objects to place in the collection.\n\nThis is an optional argument whose default value is null.",
+                "Name": "ObjectsEnumerator",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "Document",
+        "name": "DocumentType",
+        "description": "Gets the constant that indicates the type of this document.",
+        "property_value": "This is a read only property whose value is a DocumentTypeEnum."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Document",
+        "name": "Open",
+        "description": "Property that returns whether this document is currently open. If False, the document has only been initialized and calling methods or properties on the document could cause it to open.",
+        "property_value": "This is a read only property whose value is a Boolean."
+    },
+    {
+        "type": "method",
+        "parent_Object": "ObjectCollection",
+        "name": "Add",
+        "description": "Adds an object to the generic collection.",
+        "parameters": [
+            {
+                "Description": "Input Object to add to the collection.",
+                "Name": "Object",
+                "Type": "Object"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "InterferenceResults",
+        "name": "Count",
+        "description": "Property that returns the number of items in the collection.",
+        "property_value": "This is a read only property whose value is a Long."
+    },
+    {
+        "type": "property",
+        "parent_Object": "InterferenceResults",
+        "name": "Item",
+        "description": "Returns the specified InterferenceResult object from the collection.",
+        "property_value": "This is a read only property whose value is an InterferenceResult."
+    },
+    {
+        "type": "property",
+        "parent_Object": "AssemblyDocument",
+        "name": "ComponentDefinition",
+        "description": "Property that returns the object associated with this assembly. For a standard assembly document, an AssemblyComponentDefinition object will be returned. For a weldment assembly, a Weldment object.",
+        "property_value": "This is a read only property whose value is an AssemblyComponentDefinition."
+    },
+    {
+        "type": "property",
+        "parent_Object": "AssemblyComponentDefinition",
+        "name": "Occurrences",
+        "description": "Property that returns the collection object.",
+        "property_value": "This is a read only property whose value is a ComponentOccurrences."
+    },
+    {
+        "type": "property",
+        "parent_Object": "ComponentOccurrence",
+        "name": "Name",
+        "description": "Gets/Sets the human-readable name of this Component Occurrence.",
+        "property_value": "This is a read/write property whose value is a String."
+    },
+    {
+        "type": "property",
+        "parent_Object": "InterferenceResult",
+        "name": "Volume",
+        "description": "Property that returns the volume of interference in cubic centimeters.",
+        "property_value": "This is a read only property whose value is a Double."
+    }
+]

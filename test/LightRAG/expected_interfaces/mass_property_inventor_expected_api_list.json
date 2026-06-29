@@ -1,0 +1,44 @@
+[
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "Documents",
+        "description": "Gets all the in-memory documents in a collection.",
+        "property_value": "This is a read only property whose value is a Documents."
+    },
+    {
+        "type": "property",
+        "parent_Object": "MassProperties",
+        "name": "Mass",
+        "description": "Gets and sets the mass of the model in database units.",
+        "property_value": "This is a read/write property whose value is a Double."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Document",
+        "name": "Open",
+        "description": "Property that returns whether this document is currently open. If False, the document has only been initialized and calling methods or properties on the document could cause it to open.",
+        "property_value": "This is a read only property whose value is a Boolean."
+    },
+    {
+        "type": "property",
+        "parent_Object": "PartDocument",
+        "name": "ComponentDefinition",
+        "description": "Gets the primary ComponentDefinition that resides in this file (housing the BRep and its geometric Feature Constraints).",
+        "property_value": "This is a read only property whose value is a PartComponentDefinition."
+    },
+    {
+        "type": "property",
+        "parent_Object": "PartComponentDefinition",
+        "name": "MassProperties",
+        "description": "Mass properties for this ComponentDefinition.",
+        "property_value": "This is a read only property whose value is a MassProperties."
+    },
+    {
+        "type": "property",
+        "parent_Object": "MassProperties",
+        "name": "Volume",
+        "description": "Gets and sets the volume of the model in database units.",
+        "property_value": "This is a read/write property whose value is a Double."
+    }
+]

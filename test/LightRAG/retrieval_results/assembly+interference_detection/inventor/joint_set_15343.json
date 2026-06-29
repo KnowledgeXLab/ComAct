@@ -1,0 +1,447 @@
+[
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "Documents",
+        "description": "Gets all the in-memory documents in a collection.",
+        "property_value": "This is a read only property whose value is a Documents."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "FileManager",
+        "description": "Property that returns the FileManager object.",
+        "property_value": "This is a read only property whose value is a FileManager."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "TransientGeometry",
+        "description": "Gets the object through which all transient geometry objects can be constructed.",
+        "property_value": "This is a read only property whose value is a TransientGeometry."
+    },
+    {
+        "type": "method",
+        "parent_Object": "FileManager",
+        "name": "GetTemplateFile",
+        "description": "Method that specifies the template to use when creating a file.",
+        "parameters": [
+            {
+                "Description": "Input constant that specifies the type of to create.",
+                "Name": "DocumentType",
+                "Type": "DocumentTypeEnum"
+            },
+            {
+                "Description": "Input constant that specifies the system of measure to use in the drawing being created.\n\n\n\nThis is an optional argument whose default value is 8961.",
+                "Name": "SystemOfMeasure",
+                "Type": "SystemOfMeasureEnum"
+            },
+            {
+                "Description": "Input constant that specifies the drafting standard to use in the drawing being created.\n\n\n\nThis is an optional argument whose default value is 9729.",
+                "Name": "DraftingStandard",
+                "Type": "DraftingStandardEnum"
+            },
+            {
+                "Description": "Input constant (GUID) that specifies the subtype of the document to be created (sheet metal or weldment).\n\nThis is an optional argument whose default value is null.",
+                "Name": "DocumentSubType",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "TransientGeometry",
+        "name": "CreateMatrix",
+        "description": "Method that creates a new 4x4 Matrix object. The matrix is initialized with an identity matrix.",
+        "parameters": []
+    },
+    {
+        "type": "property",
+        "parent_Object": "ComponentOccurrence",
+        "name": "Grounded",
+        "description": "'Put' is Inventor Only: Gets/Sets the Boolean flag that specifies whether this Occurrence is grounded or not.",
+        "property_value": "This is a read/write property whose value is a Boolean."
+    },
+    {
+        "type": "method",
+        "parent_Object": "AssemblyJoints",
+        "name": "CreateAssemblyJointDefinition",
+        "description": "Method that creates a new AssemblyJointDefinition object.",
+        "parameters": [
+            {
+                "Description": "Input AssemblyJointTypeEnum value that specifies the type of AssemblyJoint.",
+                "Name": "JointType",
+                "Type": "AssemblyJointTypeEnum"
+            },
+            {
+                "Description": "Input GeometryIntent object that defines the first origin and origin direction of the connection on an occurrence that being connected with others. Valid geometries for defining the first origin and origin direction are:\nLinear edge or sketch line on which the start/mid/end point can be specified as origin. The direction of the linear object defines the origin direction.\nCircular/elliptical edge or sketch entity which the center will be used as origin. The normal of the object defines the origin direction.\nCylindrical/conical/elliptical-cylindrical face which the start/mid/end point on the axis of the face can be specified as origin. The axis of the face defines the origin direction.\nToroidal/spherical face which the center will be used as origin. The axis of the toroidal face defines the origin direction.\nPlanar face that has linear/circular/elliptical edges which the start/mid/end point of linear edge or center of circular/elliptical edge can be specified as origin. The normal of the planar face defines the origin direction.",
+                "Name": "OriginOne",
+                "Type": "GeometryIntent"
+            },
+            {
+                "Description": "Input GeometryIntent object that defines the second origin and origin direction of the connection on an occurrence that the first occurrence will be connected to. Refer to OriginOne for the valid geometries for defining the second origin and origin direction.",
+                "Name": "OriginTwo",
+                "Type": "GeometryIntent"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "AssemblyJointDefinition",
+        "name": "FlipOriginDirection",
+        "description": "Read-write property that gets and sets whether flip the origin direction defined by OriginOne.",
+        "property_value": "This is a read/write property whose value is a Boolean."
+    },
+    {
+        "type": "method",
+        "parent_Object": "Document",
+        "name": "SaveAs",
+        "description": "Saves this document into a file of the specified name.",
+        "parameters": [
+            {
+                "Description": "Input String that specifies the name of the file to save the document into.",
+                "Name": "FileName",
+                "Type": "String"
+            },
+            {
+                "Description": "Input Boolean that indicates whether the file to be saved is new or is a copy of a previously existing file.",
+                "Name": "SaveCopyAs",
+                "Type": "Boolean"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "Documents",
+        "name": "Add",
+        "description": "Creates a new of the specified type. Optionally, a template file can be specified instead.",
+        "parameters": [
+            {
+                "Description": "Input that specifies the type of document to add. If the DocumentType argument is specified to be kDrawingDocumentObject, the method will honor the application option to decide whether to use an idw template or an Inventor DWG template.",
+                "Name": "DocumentType",
+                "Type": "DocumentTypeEnum"
+            },
+            {
+                "Description": "Input String that specifies the name of the template file.\n\nThis is an optional argument whose default value is \"\".",
+                "Name": "TemplateFileName",
+                "Type": "String"
+            },
+            {
+                "Description": "Optional input Boolean that specifies whether the created document or template is visible.\n\nThis is an optional argument whose default value is True.",
+                "Name": "CreateVisible",
+                "Type": "Boolean"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "ComponentOccurrences",
+        "name": "Add",
+        "description": "Method that creates a new for an existing part or subassembly. This method is the equivalent of the 'Place Component' command.",
+        "parameters": [
+            {
+                "Description": "Input string that specifies the full document name of the part or the sub-assembly. If only the FullFileName is specified, the master document within the file is used.",
+                "Name": "FullDocumentName",
+                "Type": "String"
+            },
+            {
+                "Description": "Input object that defines the location and orientation to position the occurrence.",
+                "Name": "Position",
+                "Type": "Matrix"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "AssemblyJoints",
+        "name": "Add",
+        "description": "Method that creates a new AssemblyJoint. The new created AssemblyJoint is returned.",
+        "parameters": [
+            {
+                "Description": "Input AssemblyJointDefinition object that defines the assembly joint you want to create.",
+                "Name": "AssemblyJointDef",
+                "Type": "AssemblyJointDefinition"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "AssemblyDocument",
+        "name": "ComponentDefinition",
+        "description": "Property that returns the object associated with this assembly. For a standard assembly document, an AssemblyComponentDefinition object will be returned. For a weldment assembly, a Weldment object.",
+        "property_value": "This is a read only property whose value is an AssemblyComponentDefinition."
+    },
+    {
+        "type": "method",
+        "parent_Object": "AssemblyComponentDefinition",
+        "name": "CreateGeometryIntent",
+        "description": "Method that creates a GeometryIntent object.\u00a0GeometryIntent objects are used as input when creating assembly joints.\u00a0They are used to identify geometry and specific locations on that geometry.",
+        "parameters": [
+            {
+                "Description": "Input object that specifies the geometry.\n\nValid input objects are proxies of SketchLine, SketchCircle, SketchArc, SketchEllipse, SketchEllipticalArc, Edge, or Face objects.",
+                "Name": "Geometry",
+                "Type": "Object"
+            },
+            {
+                "Description": "Optional input that specifies a specific position on the geometry. This can be a value from PointIntentEnum, a Point, or a GeometryIntent object that specifies a position on the geometry relative to model space, a double value indicating a position in the parametric space of the input curve.\n\nThis is an optional argument whose default value is null.",
+                "Name": "Intent",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "AssemblyComponentDefinition",
+        "name": "Occurrences",
+        "description": "Property that returns the collection object.",
+        "property_value": "This is a read only property whose value is a ComponentOccurrences."
+    },
+    {
+        "type": "property",
+        "parent_Object": "AssemblyComponentDefinition",
+        "name": "Joints",
+        "description": "Read-only property that returns the AssemblyJoints collection object which provides access to the existing joints in the assembly and provides the capability to create new joints.",
+        "property_value": "This is a read only property whose value is an AssemblyJoints."
+    },
+    {
+        "type": "method",
+        "parent_Object": "TransientGeometry",
+        "name": "CreatePoint",
+        "description": "Method that creates a new Point object.",
+        "parameters": [
+            {
+                "Description": "Input Double that specifies the point's X-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "XCoord",
+                "Type": "Double"
+            },
+            {
+                "Description": "Input Double that specifies the Point's Y-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "YCoord",
+                "Type": "Double"
+            },
+            {
+                "Description": "Input Double that specifies the point's Z-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "ZCoord",
+                "Type": "Double"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "MeasureTools",
+        "description": "Returns the MeasureTools object.",
+        "property_value": "This is a read only property whose value is a MeasureTools."
+    },
+    {
+        "type": "method",
+        "parent_Object": "MeasureTools",
+        "name": "GetMinimumDistance",
+        "description": "Method that returns the minimum distance between the two input entities and also returns the closest points associated with both entities (not necessarily on the entity).",
+        "parameters": [
+            {
+                "Description": "Object that specifies the first entity.",
+                "Name": "EntityOne",
+                "Type": "Object"
+            },
+            {
+                "Description": "Object that specifies the second entity.",
+                "Name": "EntityTwo",
+                "Type": "Object"
+            },
+            {
+                "Description": "Optional input InferredTypeEnum that specifies how the geometry of entity one is to be interpreted. Depending on the geometry of the entity one, different options are possible.\nIf entity one is a cylinder this can be either kNoInference (cylindrical surface) or kInferredLine (axis).\nIf entity one is a sphere this can be either kNoInference (spherical surface) or kInferredPoint (center).\nIf entity one is a cone this can be either kNoInference (conical surface) or kInferredLine (axis).\nIf entity one is a torus this can be either kInferredLine (axis) or kInferredPoint (center).\nIf entity one is a circular or elliptical curve this can be either kNoInference (the curve) or kInferredPoint (center).\nFor all other inputs, only kNoInference is valid.\n\n\nThis is an optional argument whose default value is 24833.",
+                "Name": "EntityOneInferredType",
+                "Type": "InferredTypeEnum"
+            },
+            {
+                "Description": "Optional input InferredTypeEnum that specifies how the geometry of entity two is to be interpreted. Depending on the geometry of the entity two, different options are possible.\nIf entity two is a cylinder this can be either kNoInference (cylindrical surface) or kInferredLine (axis).\nIf entity two is a sphere this can be either kNoInference (spherical surface) or kInferredPoint (center).\nIf entity two is a cone this can be either kNoInference (conical surface) or kInferredLine (axis).\nIf entity two is a torus this can be either kInferredLine (axis) or kInferredPoint (center).\nIf entity two is a circular or elliptical curve this can be either kNoInference (the curve) or kInferredPoint (center).\nFor all other inputs, only kNoInference is valid.\n\n\nThis is an optional argument whose default value is 24833.",
+                "Name": "EntityTwoInferredType",
+                "Type": "InferredTypeEnum"
+            },
+            {
+                "Description": "Optional output NameValueMap object that returns additional information regarding the measurement. Following are the possible return values (descriptions are below the table):\nName\tValue Type\nClosestPointOne\tPoint object that returns a transient point closest to entity one in the minimum distance measure. This point may or may not lie on entity one (but will lie on the plane or axis of entity one). If entity one is a position input (Point, Vertex, WorkPoint, etc.), the position of the input entity is returned.\nClosestPointTwo\tPoint object that returns a transient point closest to entity two in the minimum distance measure. This point may or may not lie on entity two (but will lie on the plane or axis of entity two). If entity two is a position input (Point, Vertex, WorkPoint, etc.), the position of the input entity is returned.\nClosestEntityOne\tObject type that returns the entity on which the returned ClosestPointOne lies. This is applicable only in the case where the input EntityOne is a ComponentOccurrence (or itG's proxy).\nClosestEntityTwo\tObject type that returns the entity on which the returned ClosestPointTwo lies. This is applicable only in the case where the input EntityTwo is a ComponentOccurrence (or itG's proxy).\nIntersectionFound\tBoolean that indicates whether an intersection was found between entities one and two. If True, the method returns a value of 0.\n\n\nThis is an optional argument whose default value is null.",
+                "Name": "Context",
+                "Type": "Variant",
+                "undefined": "Boolean that indicates whether an intersection was found between entities one and two. If True, the method returns a value of 0."
+            },
+            {
+                "Name": "Name",
+                "Type": "Value Type"
+            },
+            {
+                "Name": "ClosestPointOne",
+                "Type": "Point object that returns a transient point closest to entity one in the minimum distance measure. This point may or may not lie on entity one (but will lie on the plane or axis of entity one). If entity one is a position input (Point, Vertex, WorkPoint, etc.), the position of the input entity is returned."
+            },
+            {
+                "Name": "ClosestPointTwo",
+                "Type": "Point object that returns a transient point closest to entity two in the minimum distance measure. This point may or may not lie on entity two (but will lie on the plane or axis of entity two). If entity two is a position input (Point, Vertex, WorkPoint, etc.), the position of the input entity is returned."
+            },
+            {
+                "Name": "ClosestEntityOne",
+                "Type": "Object type that returns the entity on which the returned ClosestPointOne lies. This is applicable only in the case where the input EntityOne is a ComponentOccurrence (or itG's proxy)."
+            },
+            {
+                "Name": "ClosestEntityTwo",
+                "Type": "Object type that returns the entity on which the returned ClosestPointTwo lies. This is applicable only in the case where the input EntityTwo is a ComponentOccurrence (or itG's proxy)."
+            },
+            {
+                "Name": "IntersectionFound",
+                "Type": "Boolean that indicates whether an intersection was found between entities one and two. If True, the method returns a value of 0."
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "ComponentOccurrence",
+        "name": "SurfaceBodies",
+        "description": "Property that returns the SurfaceBodies collection for the occurrence. This property applies to occurrences that represent a part and provides access to the B-Rep of that part. The B-Rep queries will return coordinate data in the context of the component definition that served as the starting point to access the occurrence, which can also be accessed through the ContextDefinition property.",
+        "property_value": "This is a read only property whose value is a SurfaceBodies."
+    },
+    {
+        "type": "property",
+        "parent_Object": "SurfaceBodies",
+        "name": "Item",
+        "description": "Allows integer-indexed access to items in the collection.",
+        "property_value": "This is a read only property whose value is a SurfaceBody."
+    },
+    {
+        "type": "property",
+        "parent_Object": "SurfaceBody",
+        "name": "Faces",
+        "description": "Property that returns a collection object generated as a result of the feature.",
+        "property_value": "This is a read only property whose value is a Faces."
+    },
+    {
+        "type": "enumeration",
+        "name": "DocumentTypeEnum",
+        "description": "Document Types.",
+        "values": [
+            "12291  # Assembly Document.",
+            "12294  # Design Element Document.",
+            "12292  # Drawing Document.",
+            "12295  # Foreign Model Document.",
+            "12298  # Nesting Document.",
+            "12297  # No Document.",
+            "12290  # Part Document.",
+            "12293  # Presentation Document.",
+            "12296  # SAT File Document.",
+            "12289  # Unknown Document."
+        ]
+    },
+    {
+        "type": "enumeration",
+        "name": "PartFeatureOperationEnum",
+        "description": "Constants identifying the type of Boolean operation to be performed during this feature placement.",
+        "values": [
+            "20482  # Cut operation.",
+            "20483  # Intersect operation.",
+            "20481  # Join operation.",
+            "20485  # New Body operation.",
+            "20484  # Surface operation."
+        ]
+    },
+    {
+        "type": "enumeration",
+        "name": "PartFeatureExtentDirectionEnum",
+        "description": "Constants identifying the direction in which a feature extension needs to take place.",
+        "values": [
+            "20994  # Extension in the negative direction.",
+            "20993  # Extension in the positive direction.",
+            "20995  # Extension in positive AND negative direction."
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "TransientObjects",
+        "description": "Gets the object through which all general transient objects are created.",
+        "property_value": "This is a read only property whose value is a TransientObjects."
+    },
+    {
+        "type": "method",
+        "parent_Object": "AssemblyComponentDefinition",
+        "name": "AnalyzeInterference",
+        "description": "Method that analyzes the interference between two components. The input ObjectCollections contain the component occurrences that are to be checked for interference. If only one set is provided then interference checking is performed between all occurrences provided in the set. If two sets are provided then the overlap between the components of the two collections are calculated.",
+        "parameters": [
+            {
+                "Description": "Input that contains ComponentOccurrenceobjects. If this set is provided without Set2, all occurrences in the set are checked for interference against all other occurrences in the set.",
+                "Name": "Set1",
+                "Type": "ObjectCollection"
+            },
+            {
+                "Description": "Optional input that contains ComponentOccurrence objects. When this set is provided the occurrences in Set1 are checked for interference against the occurrences in Set2.\n\nThis is an optional argument whose default value is null.",
+                "Name": "Set2",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "TransientObjects",
+        "name": "CreateObjectCollection",
+        "description": "Constructs a new ObjectCollection object. If an ObjectsEnumerator is passed in, the collection starts off containing the enumerated objects.",
+        "parameters": [
+            {
+                "Description": "Input Variant that contains the enumerated objects to place in the collection.\n\nThis is an optional argument whose default value is null.",
+                "Name": "ObjectsEnumerator",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "Document",
+        "name": "DocumentType",
+        "description": "Gets the constant that indicates the type of this document.",
+        "property_value": "This is a read only property whose value is a DocumentTypeEnum."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Document",
+        "name": "Open",
+        "description": "Property that returns whether this document is currently open. If False, the document has only been initialized and calling methods or properties on the document could cause it to open.",
+        "property_value": "This is a read only property whose value is a Boolean."
+    },
+    {
+        "type": "method",
+        "parent_Object": "ObjectCollection",
+        "name": "Add",
+        "description": "Adds an object to the generic collection.",
+        "parameters": [
+            {
+                "Description": "Input Object to add to the collection.",
+                "Name": "Object",
+                "Type": "Object"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "InterferenceResults",
+        "name": "Count",
+        "description": "Property that returns the number of items in the collection.",
+        "property_value": "This is a read only property whose value is a Long."
+    },
+    {
+        "type": "property",
+        "parent_Object": "InterferenceResults",
+        "name": "Item",
+        "description": "Returns the specified InterferenceResult object from the collection.",
+        "property_value": "This is a read only property whose value is an InterferenceResult."
+    },
+    {
+        "type": "property",
+        "parent_Object": "ComponentOccurrence",
+        "name": "Name",
+        "description": "Gets/Sets the human-readable name of this Component Occurrence.",
+        "property_value": "This is a read/write property whose value is a String."
+    },
+    {
+        "type": "property",
+        "parent_Object": "InterferenceResult",
+        "name": "Volume",
+        "description": "Property that returns the volume of interference in cubic centimeters.",
+        "property_value": "This is a read only property whose value is a Double."
+    }
+]

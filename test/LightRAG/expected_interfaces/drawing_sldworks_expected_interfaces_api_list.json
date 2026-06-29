@@ -1,0 +1,360 @@
+[
+    {
+        "type": "method",
+        "owner_interface": "IDrawingDoc",
+        "name": "AutoDimension",
+        "description": "Automatically dimensions the selected drawing view.",
+        "parameters": [
+            {
+                "name": "EntitiesToDimension",
+                "description": "Entities to dimension as defined in swAutodimEntities_e"
+            },
+            {
+                "name": "HorizontalScheme",
+                "description": "Horizontal dimensioning scheme as defined in swAutodimScheme_e"
+            },
+            {
+                "name": "HorizontalPlacement",
+                "description": "Placement relative to the drawing view as defined in swAutodimHorizontalPlacement_e"
+            },
+            {
+                "name": "VerticalScheme",
+                "description": "Vertical dimensioning scheme as defined in swAutodimScheme_e"
+            },
+            {
+                "name": "VerticalPlacement",
+                "description": "Placement relative to the drawing view as defined in swAutodimVerticalPlacement_e"
+            }
+        ],
+        "return_value": "swAutodimStatusSuccess if the view is automatically dimensioned; see swAutodimStatus_e for reasons for possible failures"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IDrawingDoc",
+        "name": "Create3rdAngleViews2",
+        "description": "Creates standard three orthographic views (third angle projection) for the specified model.",
+        "parameters": [
+            {
+                "name": "ModelName",
+                "description": "Name of the document from which to create views"
+            }
+        ],
+        "return_value": "True if successful, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IDrawingDoc",
+        "name": "CreateDrawViewFromModelView3",
+        "description": "Creates a drawing view on the current drawing sheet using the specified model view.",
+        "parameters": [
+            {
+                "name": "ModelName",
+                "description": "Full pathname of the model document for which to create the drawing view (see Remarks)"
+            },
+            {
+                "name": "ViewName",
+                "description": "Name of the model view from which to create the drawing view (see Remarks)"
+            },
+            {
+                "name": "LocX",
+                "description": "x location of drawing view center in meters"
+            },
+            {
+                "name": "LocY",
+                "description": "y location of drawing view center in meters"
+            },
+            {
+                "name": "LocZ",
+                "description": "z location of drawing view center in meters"
+            }
+        ],
+        "return_value": "Pointer to the newly create IView object"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IDrawingDoc",
+        "name": "GetFirstView",
+        "description": "Gets the first drawing view on the current sheet.",
+        "parameters": [],
+        "return_value": "First drawing view in this drawing document"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IModelDoc2",
+        "name": "Extension",
+        "description": "Gets the IModelDocExtension object, which also allows access to the model document.",
+        "property_value": "IModelDocExtension"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDoc2",
+        "name": "EditRebuild3",
+        "description": "Rebuilds only those features that need to be rebuilt in the active configuration in the model.",
+        "parameters": [],
+        "return_value": "True if only those features that need to be rebuilt are rebuilt in the active configuration in the model, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDoc2",
+        "name": "ForceRebuild3",
+        "description": "Forces a rebuild of all features in the active configuration in the model.",
+        "parameters": [
+            {
+                "name": "TopOnly",
+                "description": "True rebuilds the top-level assembly only; false rebuilds the top-level assembly and all subassemblies"
+            }
+        ],
+        "return_value": "True if all features in the active configuration at the specified assembly level in the model are rebuilt, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDoc2",
+        "name": "Save3",
+        "description": "Saves the current document.",
+        "parameters": [
+            {
+                "name": "Options",
+                "description": "Mode in which to save the document as defined in swSaveAsOptions_e"
+            },
+            {
+                "name": "Errors",
+                "description": "Errors that caused the save operation to fail as defined in swFileSaveError_e"
+            },
+            {
+                "name": "Warnings",
+                "description": "Warnings or extra information generated during the save operation as defined in swFileSaveWarning_e"
+            }
+        ],
+        "return_value": "True if the save was successful, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDocExtension",
+        "name": "AlignDimensions",
+        "description": "Aligns the selected dimensions in drawing documents.",
+        "parameters": [
+            {
+                "name": "AlignType",
+                "description": "Type of alignment as defined by swAlignDimensionType_e"
+            },
+            {
+                "name": "SpaceValue",
+                "description": "Distance between dimensions"
+            }
+        ],
+        "return_value": "True if the dimensions are aligned, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDocExtension",
+        "name": "SaveAs3",
+        "description": "Exports or saves the active model (document) to a specified file path as a specific file format, such as an STL, STEP, or PDF file.",
+        "parameters": [
+            {
+                "name": "Name",
+                "description": "Full pathname of the document to save; the file extension indicates any conversion that should be performed (for example, Part1.igs to save in IGES format) (see Remarks)"
+            },
+            {
+                "name": "Version",
+                "description": "Format in which to save this document as defined in swSaveAsVersion_e (see Remarks)"
+            },
+            {
+                "name": "Options",
+                "description": "Option indicating how to save the document as defined in swSaveAsOptions_e (see Remarks)"
+            },
+            {
+                "name": "ExportData",
+                "description": "IExportPdfData object for exporting drawing sheets to PDF (see Remarks)"
+            },
+            {
+                "name": "AdvancedSaveAsOptions",
+                "description": "IAdvancedSaveAsOptions (see Remarks)"
+            },
+            {
+                "name": "Errors",
+                "description": "Errors that caused the save to fail as defined in swFileSaveError_e (see Remarks)"
+            },
+            {
+                "name": "Warnings",
+                "description": "Warnings or extra information generated during the save operation as defined in swFileSaveWarning_e (see Remarks)"
+            }
+        ],
+        "return_value": "True if the save is successful, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDocExtension",
+        "name": "SelectByID2",
+        "description": "Selects the specified entity.",
+        "parameters": [
+            {
+                "name": "Name",
+                "description": "Name of object to select or an empty string"
+            },
+            {
+                "name": "Type",
+                "description": "Type of object (uppercase) as defined in swSelectType_e or an empty string"
+            },
+            {
+                "name": "X",
+                "description": "X selection location or 0"
+            },
+            {
+                "name": "Y",
+                "description": "Y selection location or 0"
+            },
+            {
+                "name": "Z",
+                "description": "Z selection location or 0"
+            },
+            {
+                "name": "Append",
+                "description": "If...\tAn, if entity is...\tThen...\nTrue\tNot already selected\tEntity is appended to the current selection list\n\tAlready selected\tEntity is removed from the current selection list\nFalse\tNot already selected\tCurrent selection is cleared and then the entity is put on the list\n\tAlready selected\tCurrent selection list remains the same"
+            },
+            {
+                "name": "Mark",
+                "description": "Value that you want to use as a mark; this value is used by other functions that require ordered selection (see Remarks)"
+            },
+            {
+                "name": "Callout",
+                "description": "Pointer to the associated callout"
+            },
+            {
+                "name": "SelectOption",
+                "description": "Selection option as defined in swSelectOption_e (see Remarks)"
+            }
+        ],
+        "return_value": "True if item was successfully selected, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "GetImportFileData",
+        "description": "Gets the IGES or DXF/DWG import data for the specified file.",
+        "parameters": [
+            {
+                "name": "FileName",
+                "description": "Path and name of the IGES or DXF/DWG file"
+            }
+        ],
+        "return_value": "IGES import data or DXF/DWG import data"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "GetUserPreferenceStringValue",
+        "description": "Gets system default user preference values.",
+        "parameters": [
+            {
+                "name": "UserPreference",
+                "description": "User preference as defined in swUserPreferenceStringValue_e"
+            }
+        ],
+        "return_value": "Value of UserPreference"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "LoadFile4",
+        "description": "Loads a third-party native CAD file into a new SOLIDWORKS document using 3D Interconnect.",
+        "parameters": [
+            {
+                "name": "FileName",
+                "description": "Full path and file name of the third-party native CAD part or assembly document to import (see Remarks)"
+            },
+            {
+                "name": "ArgString",
+                "description": "Space-separated string that allows optional arguments to be specified when opening a third-party native CAD file; empty string if 3D Interconnect is enabled (see Remarks)"
+            },
+            {
+                "name": "ImportData",
+                "description": "IImportIgesData, IImportDxfDwgData, or IImportStepData object; null or Nothing if 3D Interconnect is not enabled (see Remarks)"
+            },
+            {
+                "name": "Errors",
+                "description": "Errors as defined in swFileLoadError_e"
+            }
+        ],
+        "return_value": "Model document"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "OpenDoc6",
+        "description": "Opens an existing document and returns a pointer to the document object.",
+        "parameters": [
+            {
+                "name": "FileName",
+                "description": "Document name or full path if not in current directory, including extension"
+            },
+            {
+                "name": "Type",
+                "description": "Document type as defined in swDocumentTypes_e"
+            },
+            {
+                "name": "Options",
+                "description": "Mode in which to open the document as defined in swOpenDocOptions_e"
+            },
+            {
+                "name": "Configuration",
+                "description": "Model configuration in which to open this document\n\nApplies to parts and assemblies, not drawings\n\nIf this argument is empty or the specified configuration is not present in the model, the model is opened in the last-used configuration"
+            },
+            {
+                "name": "Errors",
+                "description": "Load errors as defined in swFileLoadError_e (See Remarks)"
+            },
+            {
+                "name": "Warnings",
+                "description": "Warnings or extra information generated during the open operation as defined in swFileLoadWarning_e"
+            }
+        ],
+        "return_value": "Newly loaded model document or NULL if document failed to open"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "NewDocument",
+        "description": "Creates a new document based on the specified template.",
+        "parameters": [
+            {
+                "name": "TemplateName",
+                "description": "Fully qualified path and name of the template to use for creating the new document"
+            },
+            {
+                "name": "PaperSize",
+                "description": "Size of paper as defined in swDwgPaperSizes_e"
+            },
+            {
+                "name": "Width",
+                "description": "Width of paper; used only when PaperSize is swDwgPapersUserDefined"
+            },
+            {
+                "name": "Height",
+                "description": "Height of paper; used only when PaperSize is swDwgPapersUserDefined"
+            }
+        ],
+        "return_value": "Newly created document or NULL if the operation fails"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IView",
+        "name": "UseSheetScale",
+        "description": "Gets or sets whether the scale of the drawing view is the same as the scale of the drawing sheet on which this view is located.",
+        "property_value": "1 if the view scale is the same as the sheet scale, 0 if the view scale is independent of the sheet scale"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IView",
+        "name": "GetNextView",
+        "description": "Gets the next drawing view in the drawing.",
+        "parameters": [],
+        "return_value": "Next view"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IView",
+        "name": "Type",
+        "description": "Gets the drawing view type.",
+        "property_value": "Type of drawing view as defined by swDrawingViewTypes_e"
+    }
+]

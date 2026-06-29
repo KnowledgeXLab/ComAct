@@ -1,0 +1,19 @@
+[
+    {
+        "type": "enumeration",
+        "name": "DocumentTypeEnum",
+        "description": "Document Types.",
+        "values": [
+            "12291  # Assembly Document.",
+            "12294  # Design Element Document.",
+            "12292  # Drawing Document.",
+            "12295  # Foreign Model Document.",
+            "12298  # Nesting Document.",
+            "12297  # No Document.",
+            "12290  # Part Document.",
+            "12293  # Presentation Document.",
+            "12296  # SAT File Document.",
+            "12289  # Unknown Document."
+        ]
+    }
+]

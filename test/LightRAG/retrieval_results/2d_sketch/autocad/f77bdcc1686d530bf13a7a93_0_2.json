@@ -1,0 +1,66 @@
+[
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "Documents",
+        "description": "Gets the Documents collection.",
+        "property_value": "The Documents collection for the current AutoCAD session."
+    },
+    {
+        "type": "method",
+        "parent_Object": "Document",
+        "name": "SaveAs",
+        "description": "Saves the document to a specified file; no longer supported for menu groups.",
+        "parameters": [],
+        "return_value": "No return value."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Document",
+        "name": "Layers",
+        "description": "Gets the Layers collection for the document.",
+        "property_value": "The Layers collection for the document."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Document",
+        "name": "ModelSpace",
+        "description": "Gets the ModelSpace collection for the document.",
+        "property_value": "The ModelSpace collection for the document."
+    },
+    {
+        "type": "method",
+        "parent_Object": "Documents",
+        "name": "Add",
+        "description": "Creates a member object and adds it to the appropriate collection.",
+        "parameters": [],
+        "return_value": "The newly added object."
+    },
+    {
+        "type": "method",
+        "parent_Object": "Layers",
+        "name": "Add",
+        "description": "Creates a member object and adds it to the appropriate collection.",
+        "parameters": [],
+        "return_value": "The newly added object."
+    },
+    {
+        "type": "method",
+        "parent_Object": "ModelSpace Collection",
+        "name": "AddLine",
+        "description": "Creates a line passing through two points.",
+        "parameters": [
+            {
+                "description": "The 3D WCS coordinates specifying the line start point.",
+                "name": "StartPoint",
+                "type": "Variant (three-element array of doubles)"
+            },
+            {
+                "description": "The 3D WCS coordinates specifying the line endpoint.",
+                "name": "EndPoint",
+                "type": "Variant (three-element array of doubles)"
+            }
+        ],
+        "return_value": "The newly created Line object."
+    }
+]

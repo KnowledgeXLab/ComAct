@@ -1,0 +1,126 @@
+[
+    {
+        "type": "property",
+        "owner_interface": "IMassProperty2",
+        "name": "AccuracyLevel",
+        "description": "Gets or sets the accuracy level used to calculate mass properties.",
+        "property_value": "Accuracy level as defined in swMassPropertyAccuracyLevel_e"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IMassProperty2",
+        "name": "UseSystemUnits",
+        "description": "Gets or sets whether to use system units or document units when calculating mass properties.",
+        "property_value": "True to use system units, false to use document units"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IMassProperty2",
+        "name": "GetOverrideOptions",
+        "description": "Gets the mass property override options for the selected bodies/components.",
+        "parameters": [],
+        "return_value": "IMassPropertyOverrideOptions"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IMassProperty2",
+        "name": "SetOverrideOptions",
+        "description": "Sets the mass property override options for the selected bodies/components.",
+        "parameters": [
+            {
+                "name": "Options",
+                "description": "IMassPropertyOverrideOptions"
+            },
+            {
+                "name": "Config_option",
+                "description": "Configuration option as defined in swInConfigurationOpts_e"
+            },
+            {
+                "name": "Config_names",
+                "description": "Array of configuration names; valid only if Config_option = swInConfigurationOpts_e.swSpecifyConfiguration"
+            }
+        ],
+        "return_value": "True if the mass property override options are set successfully, false if not"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IMassPropertyOverrideOptions",
+        "name": "OverrideMass",
+        "description": "Gets or sets whether to override the calculated mass value for the model currently being edited.",
+        "property_value": "True to override the calculated mass value, false to not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDocExtension",
+        "name": "CreateMassProperty2",
+        "description": "Creates a mass properties object.",
+        "parameters": [],
+        "return_value": "IMassProperty2"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IPartDoc",
+        "name": "SetMaterialPropertyName2",
+        "description": "Sets the name of the material property for the specified configuration.",
+        "parameters": [
+            {
+                "name": "ConfigName",
+                "description": "Name of configuration"
+            },
+            {
+                "name": "Database",
+                "description": "Name of the material database (see Remarks)"
+            },
+            {
+                "name": "Name",
+                "description": "Name of material (see Remarks)"
+            }
+        ],
+        "return_value": ""
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "GetImportFileData",
+        "description": "Gets the IGES or DXF/DWG import data for the specified file.",
+        "parameters": [
+            {
+                "name": "FileName",
+                "description": "Path and name of the IGES or DXF/DWG file"
+            }
+        ],
+        "return_value": "IGES import data or DXF/DWG import data"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "LoadFile4",
+        "description": "Loads a third-party native CAD file into a new SOLIDWORKS document using 3D Interconnect.",
+        "parameters": [
+            {
+                "name": "FileName",
+                "description": "Full path and file name of the third-party native CAD part or assembly document to import (see Remarks)"
+            },
+            {
+                "name": "ArgString",
+                "description": "Space-separated string that allows optional arguments to be specified when opening a third-party native CAD file; empty string if 3D Interconnect is enabled (see Remarks)"
+            },
+            {
+                "name": "ImportData",
+                "description": "IImportIgesData, IImportDxfDwgData, or IImportStepData object; null or Nothing if 3D Interconnect is not enabled (see Remarks)"
+            },
+            {
+                "name": "Errors",
+                "description": "Errors as defined in swFileLoadError_e"
+            }
+        ],
+        "return_value": "Model document"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IMassProperty2",
+        "name": "Volume",
+        "description": "Gets the volume of selected components/bodies.",
+        "property_value": "Volume"
+    }
+]

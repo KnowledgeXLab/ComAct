@@ -1,0 +1,609 @@
+[
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "Documents",
+        "description": "Gets all the in-memory documents in a collection.",
+        "property_value": "This is a read only property whose value is a Documents."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "FileManager",
+        "description": "Property that returns the FileManager object.",
+        "property_value": "This is a read only property whose value is a FileManager."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Application",
+        "name": "TransientGeometry",
+        "description": "Gets the object through which all transient geometry objects can be constructed.",
+        "property_value": "This is a read only property whose value is a TransientGeometry."
+    },
+    {
+        "type": "method",
+        "parent_Object": "FileManager",
+        "name": "GetTemplateFile",
+        "description": "Method that specifies the template to use when creating a file.",
+        "parameters": [
+            {
+                "Description": "Input constant that specifies the type of to create.",
+                "Name": "DocumentType",
+                "Type": "DocumentTypeEnum"
+            },
+            {
+                "Description": "Input constant that specifies the system of measure to use in the drawing being created.\n\n\n\nThis is an optional argument whose default value is 8961.",
+                "Name": "SystemOfMeasure",
+                "Type": "SystemOfMeasureEnum"
+            },
+            {
+                "Description": "Input constant that specifies the drafting standard to use in the drawing being created.\n\n\n\nThis is an optional argument whose default value is 9729.",
+                "Name": "DraftingStandard",
+                "Type": "DraftingStandardEnum"
+            },
+            {
+                "Description": "Input constant (GUID) that specifies the subtype of the document to be created (sheet metal or weldment).\n\nThis is an optional argument whose default value is null.",
+                "Name": "DocumentSubType",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "TransientGeometry",
+        "name": "CreateMatrix",
+        "description": "Method that creates a new 4x4 Matrix object. The matrix is initialized with an identity matrix.",
+        "parameters": []
+    },
+    {
+        "type": "method",
+        "parent_Object": "TransientGeometry",
+        "name": "CreatePoint",
+        "description": "Method that creates a new Point object.",
+        "parameters": [
+            {
+                "Description": "Input Double that specifies the point's X-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "XCoord",
+                "Type": "Double"
+            },
+            {
+                "Description": "Input Double that specifies the Point's Y-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "YCoord",
+                "Type": "Double"
+            },
+            {
+                "Description": "Input Double that specifies the point's Z-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "ZCoord",
+                "Type": "Double"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "TransientGeometry",
+        "name": "CreatePoint2d",
+        "description": "Method that creates a new Point2d object.",
+        "parameters": [
+            {
+                "Description": "Input Double that specifies the point's X-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "XCoord",
+                "Type": "Double"
+            },
+            {
+                "Description": "Input Double that specifies the Point's Y-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "YCoord",
+                "Type": "Double"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "TransientGeometry",
+        "name": "CreateVector",
+        "description": "Method that creates a new Vector object.",
+        "parameters": [
+            {
+                "Description": "Input Double that specifies the Vector's X-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "XCoord",
+                "Type": "Double"
+            },
+            {
+                "Description": "Input Double that specifies the Vector's Y-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "YCoord",
+                "Type": "Double"
+            },
+            {
+                "Description": "Input Double that specifies the Vector's Z-coordinate.\n\nThis is an optional argument whose default value is 0.0.",
+                "Name": "ZCoord",
+                "Type": "Double"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "UserCoordinateSystem",
+        "name": "XYPlane",
+        "description": "Property that returns the work plane that represents the X-Y plane of the coordinate system.",
+        "property_value": "This is a read only property whose value is a WorkPlane."
+    },
+    {
+        "type": "method",
+        "parent_Object": "UserCoordinateSystems",
+        "name": "CreateDefinition",
+        "description": "Method that creates a new UserCoordinateSystemDefinition object.",
+        "parameters": []
+    },
+    {
+        "type": "property",
+        "parent_Object": "PlanarSketch",
+        "name": "Profiles",
+        "description": "Property that returns the Profiles collection object.",
+        "property_value": "This is a read only property whose value is a Profiles."
+    },
+    {
+        "type": "method",
+        "parent_Object": "Profiles",
+        "name": "AddForSolid",
+        "description": "Method that creates a profile containing multiple paths for creating solid features. The paths can include sketch curves as well as text boxes. Individual paths in the returned profile may be deleted to obtain the desired profile.",
+        "parameters": [
+            {
+                "Description": "Optional input Boolean that specifies whether to combine the profile paths obtained when this method is used to create a new profile. For instance, let us take the example of a sketch containing two concentric circles. If this argument is specified to be true, the resulting profile will contain 2 profile paths, and the profile path corresponding to the inner circle will have its AddsMaterial flag set to False. Hence, the resulting profile is a circular disc with a circular cut\\-out. If the Combine flag is specified to be False, the resulting profile will contain 2 profile paths with the AddsMaterial flag set to True for both paths. If the sketch contains text boxes, then the profile paths corresponding to them will always have the AddsMaterial flag set to True irrespective of whether the Combine flag is specified to be True or False.\n\n\n\nThis is an optional argument whose default value is True.",
+                "Name": "Combine",
+                "Type": "Boolean"
+            },
+            {
+                "Description": "Optional input ObjectCollection that can contain sketch curves as well as text boxes. If sketch curves are specified, then the profile created by this method will include profile paths that are comprised of the exact set of sketch curves specified in the ObjectCollection. If text boxes are specified, then the profile created by this method will include profile paths that correspond to the exact set of text boxes specified in the ObjectCollection. Each text box in the collection will correspond to a unique profile path. If not specified, all the possible profile paths including sketch curves as well as text boxes will be included. This argument is ignored if the Combine argument is specified to be True.\n\n\n\nThis is an optional argument whose default value is null.",
+                "Name": "ProfilePathSegments",
+                "Type": "Variant"
+            },
+            {
+                "Description": "Optional input Variant reserved for future use. This argument is currently ignored.\n\nThis is an optional argument whose default value is null.",
+                "Name": "Reserved",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "ExtrudeFeatures",
+        "name": "CreateExtrudeDefinition",
+        "description": "Method that creates a new ExtrudeDefinition object.\u00a0The object created does not represent an extrude feature but instead is a representation of the information that defines an extrude feature.\u00a0You can use this object as input to the ExtrudeFeatures.Add method to create the actual feature.",
+        "parameters": [
+            {
+                "Description": "Input Profile object that specifies the sketch profile to use for the extrude feature.",
+                "Name": "Profile",
+                "Type": "Profile"
+            },
+            {
+                "Description": "Input that specifies the type of operation used to add the feature to the model.\u00a0Valid inputs are kNewBodyOperation, kJoinOperation, kCutOperation, kIntersectOperation and kSurfaceOperation.",
+                "Name": "Operation",
+                "Type": "PartFeatureOperationEnum"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "ExtrudeDefinition",
+        "name": "SetDistanceExtent",
+        "description": "Method that changes the extents to be \u201cdistance\u201d extents.\u00a0If this method is called on an asymmetric extrude, the second direction extent is removed.\u00a0To change extent values, use the properties on the object returned by the Extent property.",
+        "parameters": [
+            {
+                "Description": "Input Variant that defines the length of the extrusion.\u00a0This can be either a numeric value or a string.\u00a0A parameter for this value will be created and the supplied string or value is assigned to the parameter.\u00a0If a value is input, the units are centimeters.\u00a0If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.",
+                "Name": "Distance",
+                "Type": "Variant"
+            },
+            {
+                "Description": "Input constant that indicates which side of the sketch plane to extrude towards.\u00a0Valid input is kPositiveExtentDirection, kNegativeExtentDirection, or kSymmetricExtentDirection.\u00a0kPositiveExtentDirection defines the offset direction to be in the same direction as the normal of the sketch plane.",
+                "Name": "ExtentDirection",
+                "Type": "PartFeatureExtentDirectionEnum"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "ExtrudeDefinition",
+        "name": "SetDistanceExtentTwo",
+        "description": "Method that sets the second direction extent to be \u201cdistance\u201d extents.\u00a0This method returns an error if the first extent type is not distance extent.",
+        "parameters": [
+            {
+                "Description": "Input Variant that defines the length of the extrusion in the other direction for an asymmetric extrude.\u00a0This can be either a numeric value or a string.\u00a0A parameter for this value will be created and the supplied string or value is assigned to the parameter.\u00a0If a value is input, the units are centimeters.\u00a0If a string is input, the units can be specified as part of the string or it will default to the current length units of the document.",
+                "Name": "Distance",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "Matrix",
+        "name": "PreMultiplyBy",
+        "description": "Method that post-multiplies this matrix by the specified matrix, setting this matrix to the result.",
+        "parameters": [
+            {
+                "Description": "Input Matrix object that specifies the matrix to pre-multiply by.",
+                "Name": "Matrix",
+                "Type": "Matrix"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "Matrix",
+        "name": "SetToRotation",
+        "description": "Sets this matrix to the matrix of rotation by the specified angle, through the specified origin, around the specified axis.",
+        "parameters": [
+            {
+                "Description": "Input Double that specifies the angle of rotation.",
+                "Name": "Angle",
+                "Type": "Double"
+            },
+            {
+                "Description": "Input Vector object.",
+                "Name": "Axis",
+                "Type": "Vector"
+            },
+            {
+                "Description": "Input Point object that specifies the origin.",
+                "Name": "Center",
+                "Type": "Point"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "Matrix",
+        "name": "SetTranslation",
+        "description": "Sets the translation portion of the matrix. If the optional ResetRotation flag is True, the rotation portion of the matrix is reset to identity.",
+        "parameters": [
+            {
+                "Description": "Input Vector that specifies the new translation portion of the matrix.",
+                "Name": "Translation",
+                "Type": "Vector"
+            },
+            {
+                "Description": "Optional input Boolean that indicates whether to reset to rotation portion of the matrix to identity.\n\nThis is an optional argument whose default value is False.",
+                "Name": "ResetRotation",
+                "Type": "Boolean"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "PartFeatures",
+        "name": "ExtrudeFeatures",
+        "description": "Property that returns the collection object. This collection provides access to existing ExtrudeFeature objects and provides functionality to create new ExtrudeFeature objects.",
+        "property_value": "This is a read only property whose value is an ExtrudeFeatures."
+    },
+    {
+        "type": "method",
+        "parent_Object": "AssemblyDocument",
+        "name": "SaveAs2",
+        "description": "Saves this document into a file of the specified name.",
+        "parameters": [
+            {
+                "Description": "Input String value that specifies the full filename of the file to save the document into.",
+                "Name": "FullFileName",
+                "Type": "String"
+            },
+            {
+                "Description": "Input Boolean that indicates whether the file to be saved is new or is a copy of a previously existing file.",
+                "Name": "SaveCopyAs",
+                "Type": "Boolean"
+            },
+            {
+                "Description": "Optional input NameValueMap to specify additional options when save the document. Valid options include: Name = SaveDependents. Value = Boolean that specifies whether or not to save dependent documents that have been dirtied. Defaults to True indicating that the dependents will be saved. If the DependentsToSave argument is not specified, all dirty dependents are saved. If the argument is specified as False, only this document will be saved. The argument is ignored if the document doesn't have any dependents needing save. Name = DocumentsToSave. Value = ObjectCollection that contains the Document objects to save. Use the Document.AllReferencedDocuments property to iterate over all dependent documents and find the ones that need to be saved (i.e. Dirty property returns True). If the SaveDependents argument is True and this argument is not specified, all dirty documents are saved. The argument is ignored if the document doesn't have any dependents needing save.\n\nThis is an optional argument whose default value is null.",
+                "Name": "Options",
+                "Type": "Variant"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "Documents",
+        "name": "Add",
+        "description": "Creates a new of the specified type. Optionally, a template file can be specified instead.",
+        "parameters": [
+            {
+                "Description": "Input that specifies the type of document to add. If the DocumentType argument is specified to be kDrawingDocumentObject, the method will honor the application option to decide whether to use an idw template or an Inventor DWG template.",
+                "Name": "DocumentType",
+                "Type": "DocumentTypeEnum"
+            },
+            {
+                "Description": "Input String that specifies the name of the template file.\n\nThis is an optional argument whose default value is \"\".",
+                "Name": "TemplateFileName",
+                "Type": "String"
+            },
+            {
+                "Description": "Optional input Boolean that specifies whether the created document or template is visible.\n\nThis is an optional argument whose default value is True.",
+                "Name": "CreateVisible",
+                "Type": "Boolean"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "UserCoordinateSystems",
+        "name": "Add",
+        "description": "Method that creates a new User Coordinate System. The newly created UserCoordinateSystem object is returned.",
+        "parameters": [
+            {
+                "Description": "Input UserCoordinateSystemDefinition object that defines the coordinate system you want to create. A UserCoordinateSystemDefinition object can be created using the UserCoordinateSystems.CreateDefinition method. It can also be obtained from an existing UserCoordinateSystem object.",
+                "Name": "Definition",
+                "Type": "UserCoordinateSystemDefinition"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "PlanarSketches",
+        "name": "Add",
+        "description": "Method that creates a new sketch based on the input planar entity.",
+        "parameters": [
+            {
+                "Description": "Input object that defines the planar object the sketch is to be built on. Valid input for this argument includes planar faces and work planes.",
+                "Name": "PlanarEntity",
+                "Type": "Object"
+            },
+            {
+                "Description": "Optional input Boolean that specifies if sketch geometry should automatically be created for all of the edges of the input face. This is the behavior when creating a sketch interactively in Autodesk Inventor. This argument is ignored in the case when PlanarEntity is a work plane. The default value of False specifies that no sketch geometry should automatically be created from the face edges.\n\nThis is an optional argument whose default value is False.",
+                "Name": "UseFaceEdges",
+                "Type": "Boolean"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "ExtrudeFeatures",
+        "name": "Add",
+        "description": "Method that creates a new Extrude feature.",
+        "parameters": [
+            {
+                "Description": "Input ExtrudeDefinition object that defines the extrude feature you want to create.\u00a0An ExtrudeDefinition object can be created using the ExtrudeFeatures.CreateExtrudeDefinition method.\u00a0It can also be obtained from an existing ExtrudeFeature object.",
+                "Name": "Definition",
+                "Type": "ExtrudeDefinition"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "PartDocument",
+        "name": "ComponentDefinition",
+        "description": "Gets the primary ComponentDefinition that resides in this file (housing the BRep and its geometric Feature Constraints).",
+        "property_value": "This is a read only property whose value is a PartComponentDefinition."
+    },
+    {
+        "type": "property",
+        "parent_Object": "PartComponentDefinition",
+        "name": "Features",
+        "description": "Property that returns the PartFeatures collection object.",
+        "property_value": "This is a read only property whose value is a PartFeatures."
+    },
+    {
+        "type": "property",
+        "parent_Object": "PartComponentDefinition",
+        "name": "Sketches",
+        "description": "Gets the PlanarSketches collection object that encapsulates all of the planar sketches defined in this ComponentDefinition.",
+        "property_value": "This is a read only property whose value is a PlanarSketches."
+    },
+    {
+        "type": "property",
+        "parent_Object": "PartComponentDefinition",
+        "name": "UserCoordinateSystems",
+        "description": "Property that returns the UserCoordinateSystems collection object.",
+        "property_value": "This is a read only property whose value is a UserCoordinateSystems."
+    },
+    {
+        "type": "property",
+        "parent_Object": "UserCoordinateSystemDefinition",
+        "name": "Transformation",
+        "description": "Gets and puts the transformation matrix.",
+        "property_value": "This is a read/write property whose value is a Matrix."
+    },
+    {
+        "type": "property",
+        "parent_Object": "PlanarSketch",
+        "name": "SketchPoints",
+        "description": "Property that returns the SketchPoints collection object.",
+        "property_value": "This is a read only property whose value is a SketchPoints."
+    },
+    {
+        "type": "method",
+        "parent_Object": "SketchPoints",
+        "name": "Add",
+        "description": "Method that creates a new sketch point at the specified coordinate.",
+        "parameters": [
+            {
+                "Description": "Input that defines the position of the sketch point.",
+                "Name": "Point",
+                "Type": "Point2d"
+            },
+            {
+                "Description": "Optional input Boolean that specifies if the point is a hole center or not.\n\nThis is an optional argument whose default value is True.",
+                "Name": "HoleCenter",
+                "Type": "Boolean"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "SketchLines",
+        "name": "AddByTwoPoints",
+        "description": "Method that creates a new sketch line based on the two input points. The new sketch line is returned.",
+        "parameters": [
+            {
+                "Description": "Input object that defines the start point of the line. This can be either a Point2d object defining an x-y point in space, or an existing SketchPoint object. If an existing sketch point is input, that point becomes the line's start point.",
+                "Name": "StartPoint",
+                "Type": "Object"
+            },
+            {
+                "Description": "Input object that defines the end point of the line. This can be either a Point2d object defining an x-y point in space, or an existing SketchPoint object. If an existing sketch point is input, that point becomes the line's end point.",
+                "Name": "EndPoint",
+                "Type": "Object"
+            }
+        ]
+    },
+    {
+        "type": "enumeration",
+        "name": "DocumentTypeEnum",
+        "description": "Document Types.",
+        "values": [
+            "12291  # Assembly Document.",
+            "12294  # Design Element Document.",
+            "12292  # Drawing Document.",
+            "12295  # Foreign Model Document.",
+            "12298  # Nesting Document.",
+            "12297  # No Document.",
+            "12290  # Part Document.",
+            "12293  # Presentation Document.",
+            "12296  # SAT File Document.",
+            "12289  # Unknown Document."
+        ]
+    },
+    {
+        "type": "enumeration",
+        "name": "PartFeatureOperationEnum",
+        "description": "Constants identifying the type of Boolean operation to be performed during this feature placement.",
+        "values": [
+            "20482  # Cut operation.",
+            "20483  # Intersect operation.",
+            "20481  # Join operation.",
+            "20485  # New Body operation.",
+            "20484  # Surface operation."
+        ]
+    },
+    {
+        "type": "enumeration",
+        "name": "PartFeatureExtentDirectionEnum",
+        "description": "Constants identifying the direction in which a feature extension needs to take place.",
+        "values": [
+            "20994  # Extension in the negative direction.",
+            "20993  # Extension in the positive direction.",
+            "20995  # Extension in positive AND negative direction."
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "MassProperties",
+        "name": "Mass",
+        "description": "Gets and sets the mass of the model in database units.",
+        "property_value": "This is a read/write property whose value is a Double."
+    },
+    {
+        "type": "property",
+        "parent_Object": "Document",
+        "name": "Open",
+        "description": "Property that returns whether this document is currently open. If False, the document has only been initialized and calling methods or properties on the document could cause it to open.",
+        "property_value": "This is a read only property whose value is a Boolean."
+    },
+    {
+        "type": "property",
+        "parent_Object": "PartComponentDefinition",
+        "name": "MassProperties",
+        "description": "Mass properties for this ComponentDefinition.",
+        "property_value": "This is a read only property whose value is a MassProperties."
+    },
+    {
+        "type": "property",
+        "parent_Object": "MassProperties",
+        "name": "Volume",
+        "description": "Gets and sets the volume of the model in database units.",
+        "property_value": "This is a read/write property whose value is a Double."
+    },
+    {
+        "type": "property",
+        "parent_Object": "MassProperties",
+        "name": "CenterOfMass",
+        "description": "Property that gets the center of mass.",
+        "property_value": "This is a read only property whose value is a Point."
+    },
+    {
+        "type": "method",
+        "parent_Object": "MassProperties",
+        "name": "PrincipalMomentsOfInertia",
+        "description": "Property that gets the moments of inertia about the principal axis.",
+        "parameters": [
+            {
+                "Description": "Output Double that specifies the first moment of inertia.",
+                "Name": "I1",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output Double that specifies the second moment of inertia.",
+                "Name": "I2",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output Double that specifies the third moment of inertia.",
+                "Name": "I3",
+                "Type": "Double"
+            }
+        ]
+    },
+    {
+        "type": "property",
+        "parent_Object": "MassProperties",
+        "name": "Accuracy",
+        "description": "Read-write property that gets/sets the desired level of computational accuracy of the mass property calculations.",
+        "property_value": "This is a read/write property whose value is a MassPropertiesAccuracyEnum."
+    },
+    {
+        "type": "method",
+        "parent_Object": "MassProperties",
+        "name": "XYZMomentsOfInertia",
+        "description": "Method that gets the moments of inertia about the reference axis with the center of gravity as origin.",
+        "parameters": [
+            {
+                "Description": "Output Double that returns the XX partial moment.",
+                "Name": "Ixx",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output Double that returns the YY partial moment.",
+                "Name": "Iyy",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output Double that returns the ZZ partial moment.",
+                "Name": "Izz",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output Double that returns the XY partial moment.",
+                "Name": "Ixy",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output Double that returns the YZ partial moment.",
+                "Name": "Iyz",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output Double that returns the XZ partial moment.",
+                "Name": "Ixz",
+                "Type": "Double"
+            }
+        ]
+    },
+    {
+        "type": "method",
+        "parent_Object": "MassProperties",
+        "name": "RotationToPrincipal",
+        "description": "Gets the rotation from the active edit coordinate system of the target to the principal coordinate system.",
+        "parameters": [
+            {
+                "Description": "Output the rotation angle in radian along X axis.",
+                "Name": "Rx",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output the rotation angle in radian along Y axis.",
+                "Name": "Ry",
+                "Type": "Double"
+            },
+            {
+                "Description": "Output the rotation angle in radian along Z axis.",
+                "Name": "Rz",
+                "Type": "Double"
+            }
+        ]
+    }
+]

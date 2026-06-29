@@ -1,0 +1,41 @@
+[
+    {
+        "type": "enumeration",
+        "name": "DocumentTypeEnum",
+        "description": "Document Types.",
+        "values": [
+            "12291  # Assembly Document.",
+            "12294  # Design Element Document.",
+            "12292  # Drawing Document.",
+            "12295  # Foreign Model Document.",
+            "12298  # Nesting Document.",
+            "12297  # No Document.",
+            "12290  # Part Document.",
+            "12293  # Presentation Document.",
+            "12296  # SAT File Document.",
+            "12289  # Unknown Document."
+        ]
+    },
+    {
+        "type": "enumeration",
+        "name": "PartFeatureOperationEnum",
+        "description": "Constants identifying the type of Boolean operation to be performed during this feature placement.",
+        "values": [
+            "20482  # Cut operation.",
+            "20483  # Intersect operation.",
+            "20481  # Join operation.",
+            "20485  # New Body operation.",
+            "20484  # Surface operation."
+        ]
+    },
+    {
+        "type": "enumeration",
+        "name": "PartFeatureExtentDirectionEnum",
+        "description": "Constants identifying the direction in which a feature extension needs to take place.",
+        "values": [
+            "20994  # Extension in the negative direction.",
+            "20993  # Extension in the positive direction.",
+            "20995  # Extension in positive AND negative direction."
+        ]
+    }
+]

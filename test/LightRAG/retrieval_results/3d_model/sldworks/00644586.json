@@ -1,0 +1,499 @@
+[
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "NewDocument",
+        "description": "Creates a new document based on the specified template.",
+        "parameters": [
+            {
+                "name": "TemplateName",
+                "description": "Fully qualified path and name of the template to use for creating the new document"
+            },
+            {
+                "name": "PaperSize",
+                "description": "Size of paper as defined in swDwgPaperSizes_e"
+            },
+            {
+                "name": "Width",
+                "description": "Width of paper; used only when PaperSize is swDwgPapersUserDefined"
+            },
+            {
+                "name": "Height",
+                "description": "Height of paper; used only when PaperSize is swDwgPapersUserDefined"
+            }
+        ],
+        "return_value": "Newly created document or NULL if the operation fails"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISldWorks",
+        "name": "GetUserPreferenceStringValue",
+        "description": "Gets system default user preference values.",
+        "parameters": [
+            {
+                "name": "UserPreference",
+                "description": "User preference\u00a0as defined in swUserPreferenceStringValue_e"
+            }
+        ],
+        "return_value": "Value of UserPreference"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IModelDoc2",
+        "name": "Extension",
+        "description": "Gets the IModelDocExtension object, which also allows access to the model document.",
+        "property_value": "IModelDocExtension"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IModelDoc2",
+        "name": "SketchManager",
+        "description": "Gets the sketch manager, which allows access to sketch-creation routines.",
+        "property_value": "Sketch manager"
+    },
+    {
+        "type": "property",
+        "owner_interface": "IModelDoc2",
+        "name": "FeatureManager",
+        "description": "Gets the IFeatureManager\u00a0object, which allows access to the FeatureManager design tree.",
+        "property_value": "IFeatureManager"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDocExtension",
+        "name": "SelectByID2",
+        "description": "Selects the specified entity.",
+        "parameters": [
+            {
+                "name": "Name",
+                "description": "Name of object to select or an empty string"
+            },
+            {
+                "name": "Type",
+                "description": "Type of object (uppercase) as defined in swSelectType_e or an empty string"
+            },
+            {
+                "name": "X",
+                "description": "X selection location or 0"
+            },
+            {
+                "name": "Y",
+                "description": "Y selection location or 0"
+            },
+            {
+                "name": "Z",
+                "description": "Z selection location or 0"
+            },
+            {
+                "name": "Append",
+                "description": "If...\tAn, if entity is...\tThen...\nTrue\tNot already selected\tEntity is appended to the current selection list\n\tAlready selected\tEntity is removed from the current selection list\nFalse\tNot already selected\tCurrent selection is cleared and then the\u00a0entity is put on the list\n\tAlready selected\tCurrent selection list remains the same"
+            },
+            {
+                "name": "Mark",
+                "description": "Value that you want to use as a mark; this value is used by other functions that require ordered selection (see Remarks)"
+            },
+            {
+                "name": "Callout",
+                "description": "Pointer to the associated callout"
+            },
+            {
+                "name": "SelectOption",
+                "description": "Selection option as defined in swSelectOption_e (see Remarks)"
+            }
+        ],
+        "return_value": "True if item was successfully selected, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISketchManager",
+        "name": "InsertSketch",
+        "description": "Draws or inserts a new two-dimensional sketch on the first face or plane selected in the active document to begin 2D geometry creation.",
+        "parameters": [
+            {
+                "name": "UpdateEditRebuild",
+                "description": "True to rebuild the part with any changes made to the sketch and exit sketch mode, false to not"
+            }
+        ],
+        "return_value": ""
+    },
+    {
+        "type": "method",
+        "owner_interface": "IFeatureManager",
+        "name": "FeatureExtrusion3",
+        "description": "Creates an extruded feature.",
+        "parameters": [
+            {
+                "name": "Sd",
+                "description": "True for single ended, false for double ended"
+            },
+            {
+                "name": "Flip",
+                "description": "True to flip the side to cut"
+            },
+            {
+                "name": "Dir",
+                "description": "True to flip the direction of extrusion"
+            },
+            {
+                "name": "T1",
+                "description": "Termination type for first end of the extrusion as defined in swEndConditions_e"
+            },
+            {
+                "name": "T2",
+                "description": "Termination type for second end of the extrusion as defined in swEndConditions_e"
+            },
+            {
+                "name": "D1",
+                "description": "Depth of extrusion for first end in meters; offset, if\u00a0T1 is set to\u00a0swEndConditions_e.swEndCondOffsetFromSurface"
+            },
+            {
+                "name": "D2",
+                "description": "Depth of extrusion for second end in meters; offset, if\u00a0T2 is set to\u00a0swEndConditions_e.swEndCondOffsetFromSurface"
+            },
+            {
+                "name": "Dchk1",
+                "description": "True to allow drafting in the first direction, false to not"
+            },
+            {
+                "name": "Dchk2",
+                "description": "True to allow drafting in the second direction, false to not"
+            },
+            {
+                "name": "Ddir1",
+                "description": "True for first draft angle to be inward, false to be outward; valid only if Dchk1 is true"
+            },
+            {
+                "name": "Ddir2",
+                "description": "True for second draft angle to be inward, false to be outward; valid only if Dchk2 is true"
+            },
+            {
+                "name": "Dang1",
+                "description": "Draft angle for first end; valid only if Dchk1 is true"
+            },
+            {
+                "name": "Dang2",
+                "description": "Draft angle for second end; valid only if Dchk2 is true"
+            },
+            {
+                "name": "OffsetReverse1",
+                "description": "True\u00a0to\u00a0offset the first end from another face or plane in a direction away from the sketch, false to offset\u00a0in a\u00a0direction toward the sketch; valid only if\u00a0T1 is set to\u00a0swEndConditions_e.swEndCondOffsetFromSurface"
+            },
+            {
+                "name": "OffsetReverse2",
+                "description": "True to\u00a0offset the second end from another face or plane in a direction away from the sketch, false to\u00a0offset\u00a0in a\u00a0direction toward the sketch; valid only if\u00a0T2 is set to\u00a0swEndConditions_e.swEndCondOffsetFromSurface"
+            },
+            {
+                "name": "TranslateSurface1",
+                "description": "True\u00a0if the\u00a0first end of the extrusion is a translation of the reference surface, false\u00a0if it has a true offset; valid only if T1 is set to swEndConditions_e.swEndCondOffsetFromSurface"
+            },
+            {
+                "name": "TranslateSurface2",
+                "description": "True if the second end of the extrusion is a translation of the reference surface, false\u00a0if it has a true offset; valid only if\u00a0T2 is set to\u00a0swEndConditions_e.swEndCondOffsetFromSurface"
+            },
+            {
+                "name": "Merge",
+                "description": "True to merge the results in a multibody part, false to not"
+            },
+            {
+                "name": "UseFeatScope",
+                "description": "True if the feature only affects selected bodies, false if the feature affects all bodies (see Remarks)"
+            },
+            {
+                "name": "UseAutoSelect",
+                "description": "True to automatically select all bodies and have the feature affect those bodies, false to select the bodies that the feature affects (see Remarks)"
+            },
+            {
+                "name": "T0",
+                "description": "Start condition as defined in swStartConditions_e"
+            },
+            {
+                "name": "StartOffset",
+                "description": "Distance from the sketch plane to start the extrude; valid only if T0 is set to swStartConditions_e.swStartOffset"
+            },
+            {
+                "name": "FlipStartOffset",
+                "description": "True to flip the direction of the start offset,\u00a0false to not; valid only if T0 is set to swStartConditions_e.swStartOffset"
+            }
+        ],
+        "return_value": "IFeature"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IPartDoc",
+        "name": "GetBodies2",
+        "description": "Gets the bodies in this part.",
+        "parameters": [
+            {
+                "name": "BodyType",
+                "description": "Type of body as defined in swBodyType_e"
+            },
+            {
+                "name": "BVisibleOnly",
+                "description": "True gets only the visible bodies, false gets all of the bodies in the part"
+            }
+        ],
+        "return_value": "Array of bodies"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IFeatureManager",
+        "name": "InsertMoveCopyBody2",
+        "description": "Translate the sketch using the defined translation vector (X, Y, Z)",
+        "parameters": [
+            {
+                "name": "TransX",
+                "description": "Value for delta X; applies to translation and valid only if Rot* parameters are null or Nothing (see Remarks)"
+            },
+            {
+                "name": "TransY",
+                "description": "Value for delta Y; applies to translation and valid only if Rot* parameters are null or Nothing (see Remarks)"
+            },
+            {
+                "name": "TransZ",
+                "description": "Value for delta Z; applies to translation and valid only if Rot* parameters are null or Nothing (see Remarks)"
+            },
+            {
+                "name": "TransDist",
+                "description": "Distance ; applies to translation and valid only if Rot* parameters are null or Nothing (see Remarks)"
+            },
+            {
+                "name": "RotPointX",
+                "description": "Value for X rotation origin; applies to rotation (see Remarks)"
+            },
+            {
+                "name": "RotPointY",
+                "description": "Value for Y rotation origin; applies to rotation (see Remarks)"
+            },
+            {
+                "name": "RotPointZ",
+                "description": "Value for Z rotation origin; applies to rotation (see Remarks)"
+            },
+            {
+                "name": "RotAngleX",
+                "description": "Value for X rotation angle; applies to rotation (see Remarks)"
+            },
+            {
+                "name": "RotAngleY",
+                "description": "Value for\u00a0Y rotation angle; applies to rotation (see Remarks)"
+            },
+            {
+                "name": "RotAngleZ",
+                "description": "Value for Z rotation angle; applies to rotation (see Remarks)"
+            },
+            {
+                "name": "BCopy",
+                "description": "True if a copy operation, false if a move operation"
+            },
+            {
+                "name": "NumCopies",
+                "description": "Number of copies to create"
+            }
+        ],
+        "return_value": "Pointer to the IFeature object"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDoc2",
+        "name": "EditRebuild3",
+        "description": "Rebuilds only those features that need to be rebuilt in the active configuration in the model.",
+        "parameters": [],
+        "return_value": "True if only those features that need to be rebuilt are rebuilt in the active configuration in the model, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDocExtension",
+        "name": "SaveAs3",
+        "description": "Exports or saves the active model (document) to a specified file path as a specific file format, such as an STL, STEP, or PDF file.",
+        "parameters": [
+            {
+                "name": "Name",
+                "description": "Full pathname of the document to save; the file extension indicates any conversion that should be performed (for example, Part1.igs to save\u00a0in IGES format) (see Remarks)"
+            },
+            {
+                "name": "Version",
+                "description": "Format in which to save this document as defined in swSaveAsVersion_e\u00a0(see Remarks)"
+            },
+            {
+                "name": "Options",
+                "description": "Option indicating how to save the document as defined in swSaveAsOptions_e\u00a0(see Remarks)"
+            },
+            {
+                "name": "ExportData",
+                "description": "IExportPdfData object for exporting drawing sheets to PDF (see Remarks)"
+            },
+            {
+                "name": "AdvancedSaveAsOptions",
+                "description": "IAdvancedSaveAsOptions\u00a0(see Remarks)"
+            },
+            {
+                "name": "Errors",
+                "description": "Errors that caused the save to fail as defined in swFileSaveError_e\u00a0(see Remarks)"
+            },
+            {
+                "name": "Warnings",
+                "description": "Warnings or extra information generated during the save operation as defined in swFileSaveWarning_e\u00a0(see Remarks)"
+            }
+        ],
+        "return_value": "True if the save is successful, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IFeatureManager",
+        "name": "CreateCoordinateSystemUsingNumericalValues",
+        "description": "Creates a coordinate system feature using the specified numerical values for position and orientation with respect to the global coordinate system.",
+        "parameters": [
+            {
+                "name": "UseLocation",
+                "description": "True to define the position of the coordinate system using numerical values, false to not"
+            },
+            {
+                "name": "DeltaX",
+                "description": "Distance in meters along the x-axis\u00a0of the global coordinate system; valid only if UseLocation is true"
+            },
+            {
+                "name": "DeltaY",
+                "description": "Distance in meters along the y-axis\u00a0of the global coordinate system; valid only if UseLocation is true"
+            },
+            {
+                "name": "DeltaZ",
+                "description": "Distance in meters along the z-axis\u00a0of the global coordinate system; valid only if UseLocation is true"
+            },
+            {
+                "name": "UseRotation",
+                "description": "True to define the orientation of the coordinate system using numerical values, false to not"
+            },
+            {
+                "name": "AngleX",
+                "description": "0 <= Rotation in radians from the x-axis of the global coordinate system <= 6.283 radians; valid only if UseRotation is true"
+            },
+            {
+                "name": "AngleY",
+                "description": "0 <= Rotation in radians from the y-axis of the global coordinate system <= 6.283 radians; valid only if UseRotation is true"
+            },
+            {
+                "name": "AngleZ",
+                "description": "0 <= Rotation in radians from the z-axis of the global coordinate system <= 6.283 radians; valid only if UseRotation is true"
+            }
+        ],
+        "return_value": "IFeature"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISketchManager",
+        "name": "CreateCircleByRadius",
+        "description": "Creates a circle based on a center point and a specified radius.",
+        "parameters": [
+            {
+                "name": "XC",
+                "description": "X coordinate of the circle center point in meters"
+            },
+            {
+                "name": "YC",
+                "description": "Y coordinate of the circle center point in meters"
+            },
+            {
+                "name": "Zc",
+                "description": "Z coordinate of the circle center point in meters"
+            },
+            {
+                "name": "Radius",
+                "description": "Radius of the circle in meters"
+            }
+        ],
+        "return_value": "Sketch segment for the circle"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDoc2",
+        "name": "SketchModifyScale",
+        "description": "Scales the active or selected sketch.",
+        "parameters": [
+            {
+                "name": "ScaleFactor",
+                "description": "Amount by which to scale sketch"
+            }
+        ],
+        "return_value": "True if successful, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "ISketchManager",
+        "name": "RotateOrCopy3DAboutVector",
+        "description": "Rotates, and optionally copies, the selected 3D sketch entities about the specified vector.",
+        "parameters": [
+            {
+                "name": "Copy",
+                "description": ""
+            },
+            {
+                "name": "NumCopies",
+                "description": "Number of copies"
+            },
+            {
+                "name": "KeepRelations",
+                "description": "True to keep sketch relations, false to not"
+            },
+            {
+                "name": "BaseX",
+                "description": "X coordinate of the base point from which to rotate the 3D sketch entities"
+            },
+            {
+                "name": "BaseY",
+                "description": "Y coordinate of the base point from which to rotate the 3D sketch entities"
+            },
+            {
+                "name": "BaseZ",
+                "description": "Z coordinate of the base point from which to rotate the 3D sketch entities"
+            },
+            {
+                "name": "VectorXCoord",
+                "description": "X vector component of the axis of rotation, parallel to the base point"
+            },
+            {
+                "name": "VectorYCoord",
+                "description": "Y vector component of the axis of rotation, parallel to the base point"
+            },
+            {
+                "name": "VectorZCoord",
+                "description": "Z vector component of the axis of rotation, parallel to the base point"
+            },
+            {
+                "name": "AngleAboutVector",
+                "description": ""
+            }
+        ],
+        "return_value": "True if the 3D sketch entities rotated and are optionally copied about the specified vector, false if not"
+    },
+    {
+        "type": "method",
+        "owner_interface": "IModelDoc2",
+        "name": "SketchModifyTranslate",
+        "description": "Translates the coordinate system of the active or selected sketch.",
+        "parameters": [
+            {
+                "name": "StartX",
+                "description": "X sketch value defining the from-position"
+            },
+            {
+                "name": "StartY",
+                "description": "Y sketch value defining the from-position"
+            },
+            {
+                "name": "EndX",
+                "description": "X sketch value defining the to-position"
+            },
+            {
+                "name": "EndY",
+                "description": "Y sketch value defining the to-position"
+            }
+        ],
+        "return_value": "The sketch is translated from the XY start point position to the XY end point position."
+    },
+    {
+        "type": "property",
+        "owner_interface": "IExtrudeFeatureData2",
+        "name": "ReverseDirection",
+        "description": "Gets or sets whether to reverse the direction of the extrusion feature.",
+        "property_value": "True reverses the direction of the extrusion feature, false does not"
+    }
+]
